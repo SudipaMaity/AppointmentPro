@@ -1,7 +1,8 @@
 const express = require("express");
 const {
     getAdminStatsController,
-    getAllAppointmentsController
+    getAllAppointmentsController,
+    createFacultyController
 } = require("../controllers/adminController");
 
 const {
@@ -25,6 +26,14 @@ router.get(
     protect,
     authorize("admin"),
     getAllAppointmentsController
+);
+
+// Register Faculty (Admin Only)
+router.post(
+    "/create-faculty",
+    protect,
+    authorize("admin"),
+    createFacultyController
 );
 
 module.exports = router;
